@@ -25,6 +25,7 @@ def reader_tab(request):
 def save_reader(request):
     reader_item = reader(reference_id=request.POST['reader_ref_id'],
                          reader_name=request.POST['reader_name'],
+                         reader_contact=request.POST['reader_contact'],
                          reader_address=request.POST['address'],
                          active=True
                          )
