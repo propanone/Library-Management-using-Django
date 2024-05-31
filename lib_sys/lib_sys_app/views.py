@@ -6,10 +6,9 @@ from django.shortcuts import render, redirect
 from .models import *
 def home(request):
     return render(request,"home.html",context={'current_tab':"home"})
+
 def readers(request):
     return render(request,"readers.html",context={'current_tab':"readers"})
-def shopping(request):
-    return HttpResponse("Welcome to shopping")
 
 def save_student(request):
     student_name = request.POST['student_name']
@@ -21,7 +20,7 @@ def reader_tab(request):
         return render(request,"readers.html",context={'current_tab':"readers","readers":readers})
     else :
         query = request.POST['query']
-        readers = reader.objects().raw("select * from lib_sys_app where reader_name like '%"+query+"%'")
+        readers = reader.objects().row("select * from lib_sys_app where reader_name like '%"+query+"%'")
         return render(request, "readers.html", context={'current_tab': "readers",
                                                         "readers": readers,
                                                         "query":query})

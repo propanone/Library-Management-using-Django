@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+ {% extends "index.html" %}
+ {% load static %}
+
+ {% block main_content %}
+
+ <main role="main" >
+<div class="jumbotron">
+
+    <div class="container">
+        <img src="{% static '/LIMS_LOGO_BIG.png'%}" class="rounded float-start" alt="LIMS" height="200" style="margin-right: 20px;">
+        <h1>Hello, Readers!</h1>
+        <p> Welcom to our City Library. We have a large collection of Books to cater all the reading needs of all ,nds of readers</p>
+        <p> <a href="#" role="button" class="btn btn-primary btn-lg" >Browse Our Collection >> </a></p>
+    </div>
+</div>
+
+
+<div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h2>Why reading is important </h2>
+        <p>Reading is important because it enhances knowledge, improves critical thinking, and expands vocabulary. It stimulates the mind, reduces stress, and fosters empathy by exposing readers to diverse perspectives and experiences. Additionally, reading strengthens communication skills and boosts imagination and creativity.</p>
+      </div>
+      <div class="col">
+        <h2>Key benifits </h2>
+        <ul>
+            <li>Critical Thinking: Enhances analytical skills.</li>
+            <li> Vocabulary Expansion: Introduces new words and phrases.</li>
+            <li>  Mental Stimulation: Keeps the brain active and engaged.</li>
+            <li>  Stress Reduction: Provides relaxation and mental escape.</li>
+            <li> Empathy Building: Exposes readers to different perspectives and experiences.</li>
+        </ul>
+      </div>
+      <div class="col">
+      <h2>Quote for the day</h2>  
+      <p>"A reader lives a thousand lives before he dies... The man who never reads lives only one."  George R.R. Martin, A Dance with Dragons</p>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</main>
+
+<footer class="container">
+<p> &copy; City library </p>
+</footer>
+
+
+
+
+ {% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+{% load static %}
+
+{% bloack main_contetn %}
+
+<div class="container flex text-center justify-content-center align-items-center" style="padding-top: 10px;padding-bottom: 20px;margin-top: 10px;vertical-align: middle;">
+    <div class="row justify-content-center align-items-middle" style="margin-top: 10px;height: 60px;">
+        <div class="col-md-4 text-light" style="background : #0BCA93;">
+            <h4 style="margin-top: 15px;">Register new reader</h4>
+        </div>
+        <div class="col-md-8">
+            <h4>Search readers</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container" style="overflow-y:auto;height: 600px;background-color: wheat;">
+                <form class="d-flex" action="#" method="POST">
+                    {% csrf_token %}
+                    <table class="table">
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text"class="form-control" name="reader_name"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
