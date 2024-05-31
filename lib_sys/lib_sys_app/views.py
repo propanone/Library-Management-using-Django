@@ -8,12 +8,7 @@ from .models import *
 def home(request):
     return render(request,"home.html",context={'current_tab':"home"})
 
-def readers(request):
-    return render(request,"readers.html",context={'current_tab':"readers"})
 
-def save_student(request):
-    student_name = request.POST['student_name']
-    return render(request,"welcome.html",context={'student_name':student_name})
 
 def reader_tab(request):
     if request.method == "GET":
@@ -29,7 +24,7 @@ def reader_tab(request):
 
 def save_reader(request):
     reader_item = reader(reference_id=request.POST['reader_ref_id'],
-                         reader_id=request.POST['reader_name'],
+                         reader_name=request.POST['reader_name'],
                          reader_address=request.POST['address'],
                          active=True
                          )
