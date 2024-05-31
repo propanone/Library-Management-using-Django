@@ -21,7 +21,7 @@ def reader_tab(request):
         return render(request,"readers.html",context={'current_tab':"readers","readers":readers})
     else :
         query = request.POST['query']
-        readers = reader.objects().row("select * from lib_sys_app where reader_name like '%"+query+"%'")
+        readers = reader.objects().raw("select * from lib_sys_app where reader_name like '%"+query+"%'")
         return render(request, "readers.html", context={'current_tab': "readers",
                                                         "readers": readers,
                                                         "query":query})
