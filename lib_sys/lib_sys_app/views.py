@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from .models import *
+
 def home(request):
     return render(request,"home.html",context={'current_tab':"home"})
 
