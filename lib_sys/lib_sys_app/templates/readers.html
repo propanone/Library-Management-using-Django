@@ -4,9 +4,132 @@
 
 {% block main_content %}
 
+<style>
+
+    h4{
+        background:  rgb(34, 196, 185);
+        border-radius: 20px ;
+        padding: 15px 20px 15px 20px ;
+     
+    }
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #E3E6F3;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container {
+    
+    margin: 20px;
+    padding: 20px;
+    background-color: #E3E6F3;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    width: 100%;
+    
+   
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.header h4 {
+    margin: 20px;
+}
+
+.form-container,
+.readers-container {
+    padding: 20px;
+    background-color:  #E3E6F3;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    
+}
+.form-container{
+    
+margin: 0px ;
+background-color: #E3E6F3;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    
+}
+.col-md-4{
+    font-display: block;
+    align-items: center;
+}
+
+.col-md-8 h4 {
+    padding: 10px 25px 10px 25px;
+    align-items: center;
+}
+form button {
+    background-color:  rgb(34, 196, 185); 
+    color: #E3E6F3;;
+    border-radius: 30px;
+    cursor: pointer;
+    align-items: center;
+    padding: 10px 25px 10px 25px;
+    margin-right: 70px;
+
+}
+
+form button:hover {
+    background-color: rgb(34, 196, 185); ;
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    
+}
+
+table th {
+    background-color: rgb(34, 196, 185); 
+    color: white;
+
+}
+
+table td {
+    background-color: #f9f9f9;
+}
+
+.alert {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+</style>
 <div class="container flex text-center justify-content-center align-items-center" style="padding-top: 10px;padding-bottom: 20px;margin-top: 10px;vertical-align: middle;">
     <div class="row justify-content-center align-items-middle" style="margin-top: 10px;height: 60px;">
-        <div class="col-md-4 text-light" style="background : #2952db;">
+        <div class="col-md-4 text-light" >
             <h4 style="margin-top: 15px;">Register new reader</h4>
         </div>
         <div class="col-md-8">
@@ -36,7 +159,7 @@
                             <td><textarea type="text"class="form-control" name="address"></textarea></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><button class="btn btn-primary" type="submit">Save</button></td>
+                            <td colspan="2"><button  type="submit">Save</button></td>
                         </tr>
                     </table>
                 </form>
@@ -54,13 +177,13 @@
                         <form class="d-flex" role="search" action="/readers" method="POST">
                             {% csrf_token %}
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" value="{{query}}">
-                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                            <button  type="submit">Search</button>
                           </form>
                     </div>
                 </nav>
             </div>
             <div class="row" style="margin-top: 20px;">
-                <p>{{reader|length}} readers subscribed.</p>
+                <p>{{readers|length}} readers subscribed.</p>
             </div>
             <div class="row" style="margin-top: 20px;">
                 <div class="container" style="overflow-y: auto;height: 500px;">
@@ -80,9 +203,9 @@
                                     <td>{{ reader.id }}</td>
                                     <td>
                                         {% if reader.active %}
-                                            <span class="btn btn-success">{{reader.reader_name}}</span>
+                                            <span >{{reader.reader_name}}</span>
                                         {% else %}
-                                             <span class="btn btn-secondary">{{reader.reader_name}}</span>
+                                             <span >{{reader.reader_name}}</span>
                                         {% endif %}
                                     </td>
                                     <td>{{reader.reader_contact}}</td>
