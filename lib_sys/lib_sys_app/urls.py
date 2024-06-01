@@ -23,9 +23,10 @@ urlpatterns = [
     path('readers',reader_tab),
     path('readers/add', save_reader),
     path('books', book_tab),
-    path('books/add', save_book),
+    #path('books/add', save_book),
     path('blog', blog),
-    path('books0', books0),
+    path('bag', bag),
+    path('upload', upload_csv),
 
  
 ]

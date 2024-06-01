@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+{% load static %} 
+
+
+ {% block main_content %}
+
+ <style>
+    #page-header{
+  background-image: url('static/stock2.jpg');
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover;
+  background-position: center ;
+  text-align: center;
+  padding: 14px;
+}
+  #page-header h2{
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+  }
+ 
+    #cart table{
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  white-space: nowrap;
+}
+
+#cart table img{
+  width: 70px;
+}
+#cart table td:nth-child(1){
+  width: 100px;
+  text-align: center;
+}
+#cart table button {
+    width: 30px;
+    border-radius: 20px;
+    
+}
+#cart table button:hover{
+
+    background-color: red;
+}
+#cart table td:nth-child(2){
+  width: 150px;
+  text-align: center;
+}
+
+#cart table td:nth-child(3){
+  width: 250px;
+  text-align: center;
+}
+
+#cart table td:nth-child(4),
+#cart table td:nth-child(5),
+#cart table td:nth-child(6){
+  width: 150px;
+  text-align: center;
+}
+
+#cart table td:nth-child(5) input{
+  width: 70px;
+  padding: 10px 5px 10px 15px;
+}
+
+#cart table thead{
+  border: 1px solid #e2e9e1;
+  border-left: none;
+  border-right: none;
+}
+
+#cart table thead td{
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px ;
+  padding: 18px 0;
+}
+
+#cart table tbody tr td {
+  padding-top: 15px;
+}
+
+#cart table tbody tr td {
+  font-size: 13px;
+}
+
+#cart-add{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+ #coupon{
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+#coupon h3,
+#subtotal h3{
+  padding-bottom: 15px;
+}
+
+#coupon input{
+  padding: 10px 20px;
+  outline: none;
+  width: 60%;
+  margin-right: 10px;
+  border: 1px solid #e2e9e1;
+
+}
+#coupon button ,
+#subtotal button{
+  background-color: rgb(7, 155, 145);
+  color: white;
+  padding:12px 20px ;
+
+}
+
+#subtotal{
+  width: 50%;
+  margin-bottom: 10px;
+  border: 1px solid #e2e9e1;
+  padding: 30px;
+}
+
+#subtotal table{
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#subtotal table td{
+  width: 50%;
+  border: 1px solid #e2e9e1;
+  padding: 10px;
+  font-size: 13px;
+}
+ </style>
+
+<section id="page-header" class="about-header">
+    <h2>#STOCK</h2>
+    <p></p>
+</section>
+
+<section id="cart" class="section-p1">
+    <table width="100%" >
+        <thead>
+            <tr>
+                <td>Remove</td>
+                <td>Book</td>
+                <td>Reader</td>
+                <td>rent-Date</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><button><i class="far fa-times-circle"></i></button></td>
+                <td>Book name</td>
+                <td>Reader name or Id</td>
+                <td>rent date</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="cart-add" class="section-p1">
+    <div id="coupon">
+        <h3>Search Reader</h3>
+        <div>
+            <input type="text" placeholder="">
+            <button class="normal">Search</button>
+        </div>
+    </div>
+
+<div id="subtotal">
+    <h3>Black-list Readers</h3>
+    <table>
+        <tr>
+            <td> Name : <input type="text"></td>
+            <td>Id : <input type="text"></td>
+        </tr>
+        
+    </table>
+    <button class="normal">Add To list</button>
+</div>
+
+</section>   
+<hr>
+
+
+{% endblock %}

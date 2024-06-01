@@ -16,8 +16,6 @@ class book(models.Model):
         return self.title
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    publisher = models.CharField(max_length=255)
-    year = models.IntegerField()
-
-    
-    
+    score = models.CharField(max_length=255)
+    year = models.IntegerField(max_length=200)
+    image = models.ImageField(upload_to='static/', default='book-image.jpg') 
