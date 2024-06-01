@@ -146,7 +146,21 @@
     <p></p>
 </section>
 <section id="cart-add" class="section-p1">
-  
+  <div id="subtotal">
+    <h3>Books in bag</h3>
+    <table>
+      {% for book in books %}  
+        <tr>
+            <td> <img src="{{book.image}}" alt="{{book.author}}" height="100px" width="50px"></td>
+            <td> Name : {{book.author}}</td>
+            <td> Score : {{book.score}}</td>
+            <td> Year : {{book.year}}</td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+    <button class="normal">Add To list</button>
+</div>
     <div id="coupon">
       <h3>Reader to check-out :</h3>
       <form action="bag" method="POST">

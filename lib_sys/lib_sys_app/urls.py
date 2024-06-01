@@ -29,6 +29,4 @@ urlpatterns = [
     path('upload', upload_csv),
     path('chart', chart),
 
-
- 
 ]
