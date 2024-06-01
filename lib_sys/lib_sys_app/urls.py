@@ -27,6 +27,8 @@ urlpatterns = [
     path('blog', blog),
     path('bag', bag),
     path('upload', upload_csv),
+    path('chart', chart),
+
 
  
 ]

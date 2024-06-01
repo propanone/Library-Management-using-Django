@@ -145,39 +145,70 @@
     <h2>#STOCK</h2>
     <p></p>
 </section>
+<section id="cart-add" class="section-p1">
+  
+    <div id="coupon">
+      <h3>Reader to check-out :</h3>
+      <form action="bag" method="POST">
+          {% csrf_token %}
+          <label>Reader ID  </label>
+          <input name="reader_id" value="{{ reader_id }}">
+          <button type="submit">Go</button>
+          <br><br>
+          {% if reader %}
+              <label> ID</label>
+              <label>{{ reader.id }}</label><br><br>
+              <label>Name</label>
+              <label>{{ reader.reader_name }}</label>
+              <br><br>
+              <label>Contact</label>
+              <label>{{ reader.reader_contact }}</label>
+              <br><br>
+              
+          {% else %}
+              <p>No reader found with the given ID.</p>
+          {% endif %}
+          <label>Start Date</label>
+          <label><input type="date" id="date" name="stardate"></label><br><br>
+          <label>Return Date</label>
+          <label><input type="date" id="date" name="enddate"></label><br>
+      </form>
+</div>
+
+
 
 <section id="cart" class="section-p1">
     <table width="100%" >
         <thead>
             <tr>
-                <td>Remove</td>
+                <td>State</td>
                 <td>Book</td>
-                <td>Reader</td>
+                <td>Reader ID</td>
                 <td>rent-Date</td>
+                <td>Renturn-Date</td>
             </tr>
         </thead>
         <tbody>
+          {% for book in books %}  
+
             <tr>
-                <td><button><i class="far fa-times-circle"></i></button></td>
-                <td>Book name</td>
-                <td>Reader name or Id</td>
-                <td>rent date</td>
-                
+              
+                <td><button><i class="far fa-times-circle"></i>Return</button></td>
+                <td>{{book.title}}</td>
+                <td>{{reader.id}}</td>
+                <td>{{startdate}}</td>
+                <td>{{enddate}}</td>
+               
             </tr>
+            {% endfor %}  
+
         </tbody>
     </table>
 </section>
 
-<section id="cart-add" class="section-p1">
-    <div id="coupon">
-        <h3>Search Reader</h3>
-        <div>
-            <input type="text" placeholder="">
-            <button class="normal">Search</button>
-        </div>
-    </div>
 
-<div id="subtotal">
+
+<!--<div id="subtotal">
     <h3>Black-list Readers</h3>
     <table>
         <tr>
@@ -188,9 +219,8 @@
     </table>
     <button class="normal">Add To list</button>
 </div>
-
-</section>   
-<hr>
+-->
 
 
+<!--
 {% endblock %}

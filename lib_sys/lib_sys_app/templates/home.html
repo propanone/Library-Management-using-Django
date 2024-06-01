@@ -27,9 +27,10 @@
       <div class="pro">
         <img src="{{book.image}}" alt="{{book.author}}">
           <div class="des">
-              
+            <span>{{book.author}}</span>
               <h5>{{book.title}}</h5>
               <h4>{{book.score}}</h4>
+              <p id="year">Year : {{book.year}}</p>
           </div>
           <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
       </div>
@@ -39,17 +40,7 @@
 </section>
 
 
-<section id="newsletter" class="section-p1 section-m1">
-  <div class="newstext">
-      <h4>Sign Up for Newsletters</h4>
-      <p>get E-mail updates about our 
-        latest shop and<span> spesial offers</span></p>
-  </div>
-  <div class="from">
-      <input type="text" placeholder="Your e-mail address">
-      <button class="normal" >Sign Up</button>    
-  </div>
-</section>
+
 
 
  {% endblock %}

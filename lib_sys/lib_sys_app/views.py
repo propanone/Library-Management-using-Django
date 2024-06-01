@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 import csv
 from .forms import CSVUploadForm
 from django.db import connection
-
+from django.urls import reverse
 
 
 # Create your views here.
@@ -18,8 +18,7 @@ def home(request):
 def blog(request):
     return render(request,"blog.html",context={'current_tab':"blog"})
 
-def bag(request):
-    return render(request,"bag.html",context={'current_tab':"bag"})
+
 
 def reader_tab(request):
     if request.method == "GET":
@@ -49,7 +48,7 @@ def book_tab(request):
         return render(request,"books.html",context={'current_tab':"books","books":books})
     else :
         query = request.POST.get('query','')
-        books = book.objects.raw("select * from lib_sys_app_book where title like '%"+query+"%'")
+        books = book.objects.raw("select * from lib_sys_app_book where title like '%"+query+"%'")        
         return render(request,"books.html",context = {'current_tab': "books",
                                                         "books": books,
                                                         "query":query})
@@ -90,3 +89,36 @@ def upload_csv(request):
         form = CSVUploadForm()
     return render(request, 'upload.html', {'form': form})
 
+def chart(request):
+    if request.method == 'POST':
+        book_id = request.POST.get('book_id')
+        if not request.session.get('chart'):
+            request.session['chart'] = []
+        chart = request.session['chart']
+        if book_id not in chart:
+            chart.append(book_id)
+            request.session['chart'] = chart
+    return redirect('/books')  
+
+def bag(request):
+    if request.method == 'POST':
+        readers_id = request.POST.get('reader_id')
+        start = request.POST.get('startdate')
+        end = request.POST.get('enddate')
+        chart = request.session.get('chart', [])
+        books = book.objects.filter(id__in=chart)
+        readers = reader.objects.filter(reference_id=readers_id)
+
+        selected_reader = None  # Rename 'reader' variable
+        if readers.exists():
+            selected_reader = readers.first()
+        
+        return render(request, 'bag.html', {
+            'current_tab': "bag",
+            'books': books,
+            'reader': selected_reader,  # Update usage here
+            'startdate': start,
+            'enddate': end
+        })
+    else:
+        return render(request, "bag.html", context={'current_tab': "bag"})

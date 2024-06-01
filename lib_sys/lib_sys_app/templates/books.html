@@ -430,8 +430,19 @@
     border-radius: 3px;
     cursor: pointer;
   }
-  </style>
 
+  .pro-container #year{
+    text-align: left;
+    font-size: small;
+  }
+  #books_available {
+    text-align: center;
+    font-weight: 500;
+  }
+  .pro-container .pro img {
+    height: 60vh;
+  }
+  </style>
 
  <section id="page-header">
   <h2>#READ</h2>
@@ -445,20 +456,24 @@
   </div>
 </section>
 
-<div>  <p>{{books|length}} books available.</p>
+<div>  <p id="books_available">{{books|length}} books available.</p>
 </div>
 
     <section id="product1" class="section-p1" >
         <div class="pro-container">
           {% for book in books %}  
-          <div class="pro" onclick="window.location.href='sproduct.html';">
+          <div class="pro" >
                 <img src="{{book.image}}" alt="{{book.author}}">
                 <div class="des">
                     <span>{{book.author}}</span>
                     <h5>{{book.title}}</h5>
                     <h4>Score : {{book.score}}</h4>
-                </div>
-                <p>Year : {{book.year}}</p>
+                    <p id="year">Year : {{book.year}}</p>
+                    <form method="POST" action = "chart" >
+                      {% csrf_token %}
+                    <input type="hidden" name="book_id" value="{{ book.id }}">
+                    <button name="chart"><i class="fal fa-shopping-cart cart"></i></button>
+                    </div>
             </div>
             {% endfor %}
 
@@ -470,7 +485,5 @@
         <a href="#">2</a>
         <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
     </section>
-
-    
 
     {% endblock %}
