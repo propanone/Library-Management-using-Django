@@ -31,6 +31,9 @@ python manage.py  shell
 from lib_sys_app.models import book
 book.objects.all().delete()
 ```
+3. upload a db : 
+visit : http://127.0.0.1:8000/upload
+upload the csv provided or your own csv
 
 # How to create a django app : 
 1. create the projcet : modify settings 
