@@ -18,12 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 urlpatterns = [
-    path('', home),
+
+    path('', default),
     path('home', home),
+    path('subscribe', signup),
+    path('signup/add', save_user),
+    path('login', loguser),
     path('readers',reader_tab),
     path('readers/add', save_reader),
     path('books', book_tab),
-    #path('books/add', save_book),
     path('blog', blog),
     path('bag', bag),
     path('upload', upload_csv),

@@ -19,3 +19,12 @@ class book(models.Model):
     score = models.CharField(max_length=255)
     year = models.IntegerField(max_length=200)
     image = models.ImageField(upload_to='static/', default='book-image.jpg') 
+
+class user (models.Model):
+    def __str__(self):
+        return self.user_username
+    user_username = models.CharField(max_length=255)
+    user_password = models.CharField(max_length=16)
+    user_firstname =  models.CharField(max_length=255)
+    user_lastname =  models.CharField(max_length=255)
+    user_mail =  models.CharField(max_length=255)

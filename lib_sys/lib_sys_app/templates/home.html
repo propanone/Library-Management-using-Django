@@ -11,10 +11,14 @@
   <h2>Algiers Library</h2>
   <h1>Find All Kind of Books </h1>
   <h5>large collection of Books to cater all the reading needs of all knds of readers</h5>
-  <form action="/books" method="GET">
+
     {% csrf_token %}
-    <button type="submit">Our Library </button>
-  </form>
+    <div class="bottona">
+    <button  type="submit"><a href="/books">Our Library</a></button>
+    <button  type="submit"><a href="/subscribe" >Subscribe</a> </button>
+    </div>
+   
+  
 
 </section>
 <section id="product1" class="section-p1" >

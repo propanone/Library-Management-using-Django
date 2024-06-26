@@ -186,10 +186,20 @@ body {
     cursor: pointer;
     font-weight: 700;
     font-size: 15px;
+    
+    
 }
-#hero button:hover {
-    color: rgb(255, 255, 255);;
+#hero button a {
+  text-decoration: none;
+  background-color: transparent;
+  color: rgb(10, 10, 10);
 }
+#hero  button:hover ,
+#hero  button:hover a {
+    color: rgb(255, 255, 255);
+}
+
+
 #product1{
   text-align: center;
 }
@@ -387,7 +397,7 @@ footer .col {
 
 
     </style>
-
+<script src="script.js"></script>
 </head>
   <body>
  
@@ -429,6 +439,14 @@ footer .col {
              {% else %}
              <li><a href="/blog">Blog</a></li>
              {% endif %}
+
+             {% if current_tab == 'login'%}
+             <li><a class= "active" href="/login">logIn/signUp</a></li>
+             {% else %}
+             <li><a href="/login">logIn/signUp</a></li>
+             {% endif %}
+             
+             
 
         </ul>
     </div>

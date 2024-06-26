@@ -9,6 +9,8 @@ from django.urls import reverse
 
 # Create your views here.
 from .models import *
+def default(request):
+    return render(request, "login.html",context={})
 
 def home(request):
     books = book.objects.filter(score__gte=4.2)
@@ -32,14 +34,18 @@ def reader_tab(request):
                                                         "query":query})
     
 def save_reader(request):
+    readers = reader.objects.all()
     reader_item = reader(reference_id=request.POST['reader_ref_id'],
                          reader_name=request.POST['reader_name'],
                          reader_contact=request.POST['reader_contact'],
                          reader_address=request.POST['address'],
                          active=True
                         )
-    reader_item.save()
-    return redirect("/readers")
+    if reader_item in readers : 
+        return redirect("/readers")
+    else : 
+        reader_item.save()
+        return redirect("/readers")
 
 
 def book_tab(request):
@@ -59,6 +65,7 @@ def save_book(request):
                          publisher=request.POST['publisher'],
                          year=request.POST['year'],
                         )
+    
     book_item.save()
     return redirect("/books")
 
@@ -122,3 +129,28 @@ def bag(request):
         })
     else:
         return render(request, "bag.html", context={'current_tab': "bag"})
+
+def save_user(request):
+    new_user = user(   user_username=request.POST['username'],
+                        user_password=request.POST['password'],
+                         user_firstname=request.POST['fname'],
+                         user_lastname=request.POST['lname'],
+                         user_mail=request.POST['e-mail'],
+                        )
+    new_user.save()
+    return redirect("/login")
+
+def signup(request):
+    return render(request,"subscribe.html",context={})
+
+
+def loguser(request):
+    username = request.POST['username']
+    passw = request.POST['password']
+    users = user.objects.all()
+    if username == "admin" and passw == "admin" :
+        return render(request, "admin.html", context={})
+    elif user in users :
+        return render(request, "user.html", context={})
+    else : 
+        return render(request, "login.html", context={'error':"Invalid User"})

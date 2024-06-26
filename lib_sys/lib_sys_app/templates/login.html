@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static %} 
+
+<script src="script.js"></script>
+<style>
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    background:  #E3E6F3;
+    flex-direction: column;
+    margin: 0;
+}
+
+#main, #main2 {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    width: 500px;
+    text-align: center;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+h1 {
+    color: rgb(34, 196, 185); 
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(34, 196, 185); 
+    width: 100%;
+    font-size: 16px;
+}
+button#guest {
+    background-color: grey;
+}
+
+form a {
+    text-align: left;
+    font-size: small;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.choose {
+    display: flex;
+    margin: 10px;
+}
+
+.choose button {
+    justify-content: space-between;
+    margin: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 14px 30px 14px 30px;
+}
+</style>
+
+<h2>Log in as </h2>
+<div class="choose">
+    <button type="button" onclick="showSection('main')">Reader</button>
+    <button type="button" onclick="showSection('main2')">Admin</button>
+    <br>
+    <form method="post" action = "/home">
+        {% csrf_token %}
+        <button id ="guest">Continue as a Guest</button>
+    </form>
+</div>
+
+<div id="main">
+    <h1>Algiers library</h1>
+    <h3>Enter your login credentials</h3>
+    <form action="/login" method ="post">
+        {% csrf_token %}
+        <label for="username"> Username: </label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="**********" required>
+        <p id="forget"><a href="#" style="text-decoration: none;">forgot password?</a></p>
+
+        <div class="wrap">
+            <button type="submit" onclick="solve()">Submit</button>
+        </div>
+        <p>{{error}}</p>
+    </form>
+    <p>Not registered ? <a href="/subscribe" style="text-decoration: none;">Subscribe</a></p>
+</div>
+
+<div id="main2">
+    <h1>Algiers library</h1>
+    <h3>Enter admin credentials</h3>
+    <form action="/login" method ="post">
+        {% csrf_token %}
+        <label for="name"> username </label>
+        <input type="text" id="name" name="username" placeholder="" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="*********" required>
+        
+        <div class="wrap">
+            <button type="submit" onclick="solve()">Submit</button>
+        </div>
+        <p>{{error}}</p>
+    </form>
+</div>
+
+
+<script>
+function showSection(sectionId) {
+    document.getElementById('main').style.display = 'none';
+    document.getElementById('main2').style.display = 'none';
+    document.getElementById('main').style.opacity = '0';
+    document.getElementById('main2').style.opacity = '0';
+    
+    document.getElementById(sectionId).style.display = 'block';
+    setTimeout(() => {
+        document.getElementById(sectionId).style.opacity = '1';
+    }, 50);
+}
+</script>
